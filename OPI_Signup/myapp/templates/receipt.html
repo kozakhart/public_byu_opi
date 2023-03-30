@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" style=>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href='{% static 'mystyle.css' %}?{% now "U" %}'>
+    <script type="module" src='{% static 'js/script.mjs' %}?{% now "U" %}'></script>
+    <link rel="shortcut icon" type="image/png" href='{% static 'favicon.ico' %}?{% now "U" %}'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPI Request Receipt</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </script>
+</head>
+<body>
+    <div class="topnav" style="justify-content: left; background-color: #002E5D;">
+        <a aria-label="home page" href="https://byu.edu" target="_blank" data-cms-ai="0" style="display: flex; justify-content: center; padding-top: 14px; margin-left: 10px;">
+            <img class="PageLogo-image" style="max-width:80%; "src="https://brightspotcdn.byu.edu/e4/0a/b679ee0a41d9b1675fc78cd03239/byu-logo-white-small.svg" alt="BYU">
+            <div style="margin: 12px;"></div>
+            <div class="mx-name-container15" style="margin-right: 10px; border-right: 1px solid rgb(0, 87, 184); height: 100%;"></div>
+        </a>
+        <div class="header-divider"></div>
+        <div class="header">
+            <a style="font-size:22px; text-align: left; text-decoration: none; color:#ffffff; padding-bottom: 3px; padding-top: 14px;" href="https://humanities.byu.edu" target="_blank" data-cms-ai="0">College of Humanities</a>
+            <a style="font-size:28px; font-weight:500px; text-decoration: none; color:#ffffff; padding-top: 3px;" href="http://cls.byu.edu/" target="_blank" data-cms-ai="0">Center for Language Studies</a>
+        </div>
+    </div>
+    <div class="topnav" style="justify-content: center; background-color: #ffffff; padding-top: 20px;">
+        <p style="width: 50%; display: flex !important; justify-content: center;">
+            <a style="background-color:#ffffff; color:#002E5D; font-size: 20px; font-weight:400; border-bottom: #002E5D; border-bottom-style: solid; padding-top: 0px; padding-bottom: 0px; text-decoration: none; margin-right: 50px;" href="https://cls.byu.edu/programs/certificate/">About the Certificate</a>
+            <a  style="background-color:#ffffff; color:#002E5D; font-size: 20px; font-weight:400; border-bottom: #002E5D; border-bottom-style: solid; padding-top: 0px; padding-bottom: 0px; text-decoration: none;" href="mailto:cls@byu.edu" >Contact CLS</a>
+        </p>
+    </div>
+<table class="body-wrap">
+    <tbody><tr>
+        <td></td>
+        <td class="container" width="600">
+            <div class="content">
+                <table class="main" width="100%" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td class="content-wrap aligncenter">
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tbody><tr>
+                                    <td class="content-block">
+                                        <h2 style="margin-top: 200px;">Your Request Has Been Submitted</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="content-block">
+                                        <table class="invoice">
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table class="invoice-items" cellpadding="0" cellspacing="0">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td id="fullname"></td><br>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Requested Language</td>
+                                                            <td class="alignright" id="language"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Date 1</td>
+                                                            <td class="alignright" id="testdate1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Date 2</td>
+                                                            <td class="alignright" id="testdate2"></td>
+                                                        </tr>
+                                                        <tr class="total">
+                                                            <td class="alignright" width="80%"></td>
+                                                            <td class="alignright"></td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="content-block">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="content-block" style="padding-top:20px;">
+                                        BYU Center for Language Studies, 3086 JFSB, Provo, UT 84602
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <div class="footer">
+                    <table width="100%">
+                        <tbody>
+                        <tr>
+                            <td class="aligncenter content-block" style="padding-top:20px;">Questions? Email <a href="mailto:cls@byu.edu">cls@byu.edu</a></td>
+                        </tr>
+                    </tbody></table>
+                </div></div>
+        </td>
+        <td></td>
+    </tr>
+</tbody></table>
+</body>
+<script type = "text/javascript">  
+    window.onload = function(){  
+    netid=sessionStorage.getItem("netid")
+    document.getElementById("fullname").innerHTML=sessionStorage.getItem("fullname")
+    document.getElementById("language").innerHTML=sessionStorage.getItem("language")
+    document.getElementById("testdate1").innerHTML= sessionStorage.getItem("testdate1")
+    document.getElementById("testdate2").innerHTML= sessionStorage.getItem("testdate2")
+    alert('Your test schedule will be sent to your BYU school email when ready at ' + netid + '@byu.edu through Microsoft Outlook. Please click this link if you have any questions on how to access your account: https://microsoft.byu.edu/email.byu.edu')
+
+    }  
+</script> 
+</html>

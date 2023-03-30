@@ -1,0 +1,263 @@
+/* non-important stuff */
+.mb-3{
+  padding-bottom: 1vw;
+}
+.topcorner{
+  position:absolute;
+  top:0;
+  right:0;
+ }
+
+.activator {
+  position: relative;
+}
+
+.content-l1 {
+  font-size: 30px;
+  font-weight: bolder;
+  position: absolute;
+  background-color: white;
+  padding: .4em;
+  border: 1px solid red;
+  transition: 10s;
+  opacity: 0;
+}
+
+.activator:hover>.content-l1 {
+  opacity: 1;
+  transition-delay: 5s;
+}
+/* end of non-important stuff */
+.styled-table thead tr {
+  background-color: #002E5D;
+  color: #ffffff;
+  text-align: left;
+}
+/* .styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+} */
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #002E5D;
+}
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #002E5D;
+}
+
+
+.buttonload {
+  border: none; /* Remove borders */
+  color: #002E5D; /* White text */
+  /* padding: 12px 24px; Some padding */
+  font-size: 16px; /* Set a font-size */
+}
+
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+}
+
+.header-divider{
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 74%;
+  right: auto;
+  left: 0;
+  top: 13%;
+}
+.header{
+  flex-direction: column;
+  display: flex;
+  text-decoration: none;
+  font-family: Open Sans, HCo Ringside Narrow SSm, Helvetica,Arial,sans-serif;
+}
+.input-margin{
+  margin-left: 10px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.overflow{
+  overflow-x: hidden;
+}
+.mainbox{
+  display:flex; 
+  justify-content:center;
+}
+
+.agree{
+  padding-right: 80%;
+  margin-bottom: 10px;
+}
+h3{
+  padding: 10px;
+  width: 100%;
+  color: #FFFFFF !important;
+  background-color:#002E5D;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+p{
+  margin-top: 20px;
+  display: block !important;
+  width: 700px;
+  padding: 10px;
+  font-family: HCo Ringside Narrow SSm,Open Sans,Helvetica,Arial,sans-serif;
+}
+label{
+  margin-top: 20px;
+  display: block !important;
+  width: 500px;
+  /* padding: 10px; */
+}
+
+.topnav {
+  overflow: hidden;
+  display: flex;
+  flex-direction:row;
+  font-family: Open Sans, HCo Ringside Narrow SSm, Helvetica,Arial,sans-serif;
+}
+
+.topnav a {
+  float: left;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family: Open Sans, HCo Ringside Narrow SSm, Helvetica,Arial,sans-serif;
+
+}
+
+/* body {
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    min-width: 50%;
+} */
+
+form{
+  display: flex;
+  flex-direction: column;
+}
+.margin{
+  margin: 5px;
+}
+
+.input_margin{
+  padding: 10px;
+  width: 50%;
+}
+.outerbox{
+    color: black;
+    border-radius: 5px;
+    margin: 20px !important;
+    box-shadow: 0px 4px 8px 0px rgb(0 0 0 / 20%);
+    background-color: white;
+    width: 100%;
+    font-family: HCo Ringside Narrow SSm;
+}
+
+.formbox {
+  color: black;
+  border-radius: 5px;
+  margin: 10px !important;
+  border: 2px solid black;
+  background-color: white;
+  width: 100%;
+}
+
+.button_justify{
+  display: flex;
+  justify-content: right;
+  width: 70%;
+  margin-left: 20vw;
+}
+
+.signin_input{
+  margin: 20px !important;
+  padding: 0px;
+  width: 20%;
+  height: 40px;
+  border-radius: 5px !important;
+  background-color: lightskyblue;
+}
+
+td{
+  width: 8% !important;
+
+}
+
+button, .signin_input{
+  /* margin: 20px !important;
+  padding: 0px;
+  width: 20%; */
+  margin: 1vw !important;
+  width: 7vw;
+  height: 3vw;
+  height: 40px;
+  border-radius: 5px !important;
+  box-shadow: 0px 4px 8px 0px rgb(0 0 0 / 20%);
+  border: none;
+  background: none;
+  color: #002E5D;
+  font-weight: 500;
+  -webkit-appearance:none;
+
+
+}
+button:hover{
+  background-color: #002e5d;
+  color: #fff;
+  text-decoration: none;
+  transition-duration: 400ms;
+  -webkit-appearance:none;
+}
+
+input{
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: white;
+  width: 50%;
+}
+
+select{
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: white;
+  width: 50%;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: red;
+}
+
+.alert{
+  background: #c51244 !important;
+  padding: 10px !important;
+  position: relative; 
+  display: inline-block !important;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  margin-top: 10px;
+  color: #fff;
+  opacity: .5;
+  border-radius: 5px;
+}
+
+b{
+  color: red;
+}

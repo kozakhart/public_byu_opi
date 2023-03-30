@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" style=>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href='{% static 'test.css' %}?{% now "U" %}'>
+    <script type="module" src='{% static 'js/slats.mjs' %}?{% now "U" %}'></script>
+    <link rel="shortcut icon" type="image/png" href='{% static 'favicon.ico' %}?{% now "U" %}'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thirdyear SLaT Request Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    {{ form.media }}
+    </script>
+</head>
+<body class="overflow">
+    <div class="topnav" style="justify-content: left; background-color: #002E5D;">
+        <a aria-label="home page" href="https://byu.edu" target="_blank" data-cms-ai="0" style="display: flex; justify-content: center; padding-top: 14px; margin-left: 10px;">
+            <img class="PageLogo-image" style="max-width:80%; "src="https://brightspotcdn.byu.edu/e4/0a/b679ee0a41d9b1675fc78cd03239/byu-logo-white-small.svg" alt="BYU">
+            <div style="margin: 12px;"></div>
+            <div class="mx-name-container15" style="margin-right: 10px; border-right: 1px solid rgb(0, 87, 184); height: 100%;"></div>
+        </a>
+        <div class="header-divider"></div>
+        <div class="header">
+            <a style="font-size:22px; text-align: left; text-decoration: none; color:#ffffff; padding-bottom: 3px; padding-top: 14px;" href="https://humanities.byu.edu" target="_blank" data-cms-ai="0">College of Humanities</a>
+            <a style="font-size:28px; font-weight:500px; text-decoration: none; color:#ffffff; padding-top: 3px;" href="http://cls.byu.edu/" target="_blank" data-cms-ai="0">Center for Language Studies</a>
+        </div>
+
+        <!-- <div style="padding-left: 30vw;">
+        <div class="activator topcorner">
+            <div class="content-l1 topcorner">
+              I love you Alli!!!
+            </div>
+        </div>
+        </div> -->
+
+    </div>
+    <div class="topnav" style="justify-content: center; background-color: #ffffff; padding-top: 20px;">
+        <p style="width: 50%; display: flex !important; justify-content: center;">
+            <a  style="background-color:#ffffff; color:#002E5D; font-size: 20px; font-weight:400; border-bottom: #002E5D; border-bottom-style: solid; padding-top: 0px; padding-bottom: 0px; text-decoration: none;" href="mailto:cls@byu.edu" >Contact CLS</a>
+        </p>
+    </div>
+    <div class="mainbox">
+        {% load crispy_forms_tags %}
+        <form method="post" enctype="multipart/form-data" id="form_ajax" style="padding-left: 20%; padding-right:20%;">
+            {% csrf_token %}
+            <div class="outerbox">
+                <div>
+                    <h3>SLaT/Spanish/Portuguese MA Third Year Licensure Application</h3>
+                </div>
+            </div>
+            <!-- <div class="outerbox">
+                <div class="firstname">
+                    <h3>First Name</h3>
+                    <p>Please provide your first name.</p>
+                    <input class="input-margin" type="text" id="firstname" name="firstname" required/>
+                </div>
+            </div>
+            <div class="outerbox">
+                <div class="lastname">
+                    <h3>Last Name</h3>
+                    <p>Please provide your last name.</p>
+                    <input class="input-margin" type="text" id="lastname" name="lastname" required/>
+                </div>
+            </div>
+            <div class="outerbox">
+                <div class="byuid">
+                    <h3>BYU ID # (without dashes)</h3>
+                        <p>This is the 9-digit number on your BYU ID card (without the dashes). Ex- 123456789</p>
+                        <input class="input-margin" type="text" id="byuid" name="byuid" minlength="9", maxlength="9" required/>
+                </div>
+            </div>
+
+            <div class="outerbox">
+                <div class="dropdown">
+                    <h3>What is the language of instruction in which you will student teach?</h3>
+                    <select class="input-margin" name="language" id="language" required>
+                        <option value=""></option>
+                        <option value="French">French</option>
+                        <option value="Mandarin">Mandarin</option>
+                        <option value="German">German</option>
+                        <option value="Russian">Russian</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Portuguese">Portuguese</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="outerbox" id="thesis_date_box">
+                <div class="dropdown">
+                    <h3>When are you planning on defending your thesis?</h3>
+                    <input class="input-margin" type="date" name="thesis_date" id="thesis_date" required/>
+                </div>
+            </div>
+
+            <div class="outerbox">
+                <div class="major">
+                    <h3>Transcript Screenshot</h3>
+                    <p>Please submit a screenshot of your BYU transcript including your classes, grades, and cumulative GPA for the SLaT program. If you do not know how to get access to your transcript, please click <a href="https://y.byu.edu/ry/ae/prod/mymap/cgi/summary.cgi ">here</a>. Navigate to the "Credits" section and click "My Grades" on the bottom right.</p>
+                    <input class="input-margin" type="file" id="transcript" name="transcript" required/>
+                </div>
+            </div>
+
+            <div class="outerbox">
+                <div class="major">
+                    <h3>OPI Rating</h3>
+                    <p>Please attach a PDF of your most recent OPI rating. You can reach out to the <a href="mailto:cls@byu.edu">Center for Language Studies</a> if you need a copy.</p>
+                    <input class="input-margin" type="file" id="opi_rating" name="opi_rating" required/>
+                </div>
+            </div>
+
+            <div class="outerbox">
+                <div class="major">
+                    <h3>Letter of Recommendation</h3>
+                    <p>Please attach a letter of recommendation (Note: this cannot come from your thesis chair or committee members).</p>
+                    <input class="input-margin" type="file" id="letter" name="letter" required/>
+                </div>
+            </div>
+
+            <div class="outerbox">
+                <div class="major">
+                    <h3>Verification</h3>
+                    <p>By checking the box and typing my name, I attest that the information included on this application is correct and that I am applying to be admitted to the 3rd year licensure track.</p>
+                    <input class="input-margin" type="checkbox" id="check_box_verified" name="check_box_verified" style='width: 5% !important;' required/>
+                    <input class="input-margin" type="text" id="name_verified" name="name_verified"  required value=""/>
+                </div>
+            </div> -->
+            <div class="outerbox">
+                <h3>First Name</h3>
+                <p>Please provide your first name.</p>
+                {{ form.firstname|as_crispy_field }}
+              </div>
+
+              <div class="outerbox">
+                <h3>Last Name</h3>
+                <p>Please provide your last name.</p>
+                {{ form.lastname|as_crispy_field }}
+              </div>
+              <div class="outerbox">
+                <h3>BYU ID # (without dashes)</h3>
+                <p>This is the 9-digit number on your BYU ID card (without the dashes). Ex- 123456789</p>
+              {{ form.byuid|as_crispy_field }}
+            </div>
+            <div class="outerbox" id="language">
+                <h3>What is the language of instruction in which you will student teach?</h3>
+              {{ form.language|as_crispy_field }}
+              </div>
+              <div class="outerbox" id="language">
+                <h3>When are you planning on defending your thesis?</h3>
+              {{ form.thesis|as_crispy_field }}
+              </div>
+              <div class="outerbox">
+                <h3>Transcript Screenshot</h3>
+                <p>Please submit a screenshot of your BYU transcript including your classes, grades, and cumulative GPA for the SLaT program. If you do not know how to get access to your transcript, please click <a href="https://y.byu.edu/ry/ae/prod/mymap/cgi/summary.cgi ">here</a>. Navigate to the "Credits" section and click "My Grades" on the bottom right.</p>
+                {{ form.transcript|as_crispy_field }}
+              </div>
+              <div class="outerbox">
+                <h3>OPI Rating</h3>
+                <p>Please attach a PDF of your most recent OPI rating. You can reach out to the <a href="mailto:cls@byu.edu">Center for Language Studies</a> if you need a copy. If you are a native speaker of the language of specialization you will need to take an OPI in English before your student teaching.</p>
+                {{ form.opi|as_crispy_field }}
+              </div>
+              <div class="outerbox">
+                <h3>Letter of Recommendation</h3>
+                <p>Please request that a letter of recommendation from someone familiar with your teaching be sent to <a href="mailto:ellen_knell@byu.edu">ellen_knell@byu.edu.</a></p>
+              </div>
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <div>
+                <button type="submit" class="btn btn-success" style="margin-bottom: 1vw;">
+                <i id='loader' style='display:none' class="fa fa-circle-o-notch fa-spin">
+                  </i>Submit</button>
+              </div>
+        </form>
+    </div>
+<div class="topnav" style="justify-content: center; background-color: #002E5D;">
+    <div style="display: flex; flex-direction: column;">
+        <a href="https://www.byu.edu/">Brigham Young University</a>
+        <a href="https://infosec.byu.edu/privacy-notice">Privacy Notice</a>
+    </div>
+</div>
+</body>
+</html>

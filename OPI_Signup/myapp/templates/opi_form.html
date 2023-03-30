@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" style=>
+  <head>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href='{% static 'test.css' %}?{% now "U" %}'>
+    <script type="module" src='{% static 'js/opi_form.mjs' %}?{% now "U" %}'></script>
+    <link rel="shortcut icon" type="image/png" href='{% static 'favicon.ico' %}?{% now "U" %}'>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>OPI Request Form</title>
+  </head>
+  <body>
+    <div class="topnav" style="justify-content: left; background-color: #002E5D; padding-bottom: 1vw;">
+      <a aria-label="home page" href="https://byu.edu" target="_blank" data-cms-ai="0" style="display: flex; justify-content: center; padding-top: 1vw; margin-left: 10px;">
+          <img class="PageLogo-image" style="max-width:80%; "src="https://brightspotcdn.byu.edu/e4/0a/b679ee0a41d9b1675fc78cd03239/byu-logo-white-small.svg" alt="BYU">
+          <div style="margin: 12px;"></div>
+          <div class="mx-name-container15" style="margin-right: 10px; border-right: 1px solid rgb(0, 87, 184); height: 100%;"></div>
+      </a>
+      <div class="header-divider"></div>
+      <div class="header">
+          <a style="font-size:22px; text-align: left; text-decoration: none; color:#ffffff; padding-bottom: 3px; padding-top: 14px;" href="https://humanities.byu.edu" target="_blank" data-cms-ai="0">College of Humanities</a>
+          <a style="font-size:28px; font-weight:500px; text-decoration: none; color:#ffffff; padding-top: 3px;" href="http://cls.byu.edu/" target="_blank" data-cms-ai="0">Center for Language Studies</a>
+          <!-- <h2 style="color:red;">SITE DOWN FOR MAINTENANCE- Please check back tomorrow</h2> -->
+      </div>
+  </div>
+  <div class="topnav" style="justify-content: center; background-color: #ffffff; padding-top: 20px;">
+      <p style="width: 50%; display: flex !important; justify-content: center;">
+          <a style="background-color:#ffffff; color:#002E5D; font-size: 20px; font-weight:400; border-bottom: #002E5D; border-bottom-style: solid; padding-top: 0px; padding-bottom: 0px; text-decoration: none; margin-right: 50px; padding-left: 0px;" href="https://cls.byu.edu/programs/certificate/">About the Certificate</a>
+          <a  style="background-color:#ffffff; color:#002E5D; font-size: 20px; font-weight:400; border-bottom: #002E5D; border-bottom-style: solid; padding-top: 0px; padding-bottom: 0px; text-decoration: none; padding-left: 0px;" href="mailto:cls@byu.edu" >Contact CLS</a>
+      </p>
+  </div>
+    {% load crispy_forms_tags %}
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          {% block content %}
+          <form method="post" id="test_ajax">
+            {% csrf_token %}
+            <div class="outerbox">
+                <h3>OPI Agreement*</h3>
+
+                <ol style="margin-bottom: 0px;">Please read and understand ALL of the following:
+
+                    <li><b>***IMPORTANT: We will notify you of your OPI date and time through your BYU Microsoft Outlook student email once it has been scheduled. Your BYU email is your Net ID @byu.edu (Ex- gocougs123@byu.edu). Please click <a href="https://microsoft.byu.edu/email.byu.edu">here</a> if you have any questions on how to access your account.***</b></li>
+
+                    <li>The OPI is requested through the Center for Language Studies (3086 JFSB, 801-422-1201, cls@byu.edu)</li>
+                    
+                    <li>The OPI is a 20-30 minute interview that is administered on a land line phone in a private room.  Go to 1141 JFSB (the Humanities Learning Resource Center on the first floor) and a BYU lab attendant will place the call for you.</li>
+                    
+                    <li>This OPI measures your functional speaking ability through specific communication tasks and gives you an internationally recognized, official proficiency rating certificate from ACTFL (American Council on the Teaching of Foreign Languages).</li>
+                    
+                    <li>The proficiency ratings are as follows: Novice Low, Mid or High; Intermediate Low, Mid or High; Advanced Low, Mid or High; or Superior.</li>
+                    
+                    <li>Please arrive 5 minutes early for your OPI.  <b>***Failure to show up for a scheduled OPI without canceling 48 hours in advance (OR arriving more than five minutes late will result in a $60 "NO-SHOW" fee charged to your BYU Student Account.)***</b></li></ol>
+                    <div style="margin-left:10px;">
+                    {{ form.agree|as_crispy_field }}
+                    </div>
+            </div>
+
+            <div class="outerbox">
+              <h3>First Name</h3>
+              <p>As you would like it to appear on your OPI certificate.</p>
+              {{ form.firstname|as_crispy_field }}
+            </div>
+            
+            <div class="outerbox">                    
+                <h3>Last Name</h3>
+                <p>As you would like it to appear on your OPI certificate.</p>
+                {{ form.lastname|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+                <h3>BYU ID # (without dashes)</h3>
+                <p>This is the 9-digit number on your BYU ID card (without the dashes). Ex- 123456789</p>
+              {{ form.byuid|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>BYU Net ID</h3>
+              <p>Ex- gocougs123</p>
+              {{ form.netid|as_crispy_field }}
+            </div>
+
+            <div class="outerbox" id="reason">
+              <h3>Please provide the reason for taking this test.</h3>
+            {{ form.reason|as_crispy_field }}
+            </div>
+
+            <div class="outerbox" id="reason_other" style="display: none;">
+              <h3>Since you selected "Individual Request", please specify the reason.</h3>
+            {{ form.reason_other|as_crispy_field }}
+            </div>
+
+            <div class="outerbox" id="language">
+              <h3>Please select the language you are requesting:</h3>
+            {{ form.language|as_crispy_field }}
+            </div>
+
+            <div class="outerbox" id="language_other" style="display: none;">
+              <h3>Since you selected "Other" for the language question, please specify what language you are requesting.</h3>
+            {{ form.language_other|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>Language Background</h3>
+              <p>How did you learn this language?</p>
+            {{ form.experience|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>Major</h3>
+              <p>Please specify your major.</p>
+            {{ form.major|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>2nd Major</h3>
+              <p>If you have a second major, please specify here.</p>
+            {{ form.second_major|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>Minor</h3>
+              <p>If you have a minor, please specify here.</p>
+            {{ form.minor|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>Have you taken an OPI in this language in the past?</h3>
+            {{ form.scores|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>Are you able to come to BYU Campus to complete your OPI?</h3>
+            {{ form.come_to_campus|as_crispy_field }}
+            </div>
+
+            <div class="outerbox" id="cannot_come" style="display: none;">
+              <h3>Since you cannot come to campus, please tell us why.</h3>
+            {{ form.cannot_come|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>Date & Time Request #1 - Dates must be AT LEAST 2 weeks from today</h3>
+              <p>Tests can be scheduled between MONDAY-FRIDAY from 8am-4pm, but <b>NOT</b> during Tuesday devotional/forum from 11am-12pm. Tests are <b>NOT</b> scheduled on weekends, state/federal holidays, or university holidays. A <b>3-hour</b> available time range is required.  The OPI is only 20-30 minutes, but an open block of 3 hours of time allows for better accommodation of your request. (EX:  4/12/2021: 10-4) NOTE: ALL TIMES ARE IN MOUNTAIN STANDARD TIME (MST)</p>
+            {{ form.testdate1|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>Beginning of Time Range</h3>
+              <p>Please provide a 3-hour time block to take the test.</p>
+            {{ form.time1|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>End of Time Range</h3>
+              <p>Please provide a 3-hour time block to take the test.</p>
+            {{ form.time2|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>Date & Time Request #2 - Dates must be AT LEAST 2 weeks from today</h3>
+              <p><b>*IMPORTANT* THIS DATE MUST BE BOTH DIFFERENT FROM AND AFTER YOUR FIRST CHOICE.</b> (EX: First Choice: 12/15/2021 9am-12pm. Second Choice: 12/23/2021 9am-12pm). Tests can be scheduled between MONDAY-FRIDAY from 8am-4pm, but <b>NOT</b> during Tuesday devotional/forum from 11am-12pm. Tests are <b>NOT</b> scheduled on weekends, state/federal holidays, or university holidays. A <b>3-hour</b> available time range is required.  The OPI is only 20-30 minutes, but an open block of 3 hours of time allows for better accommodation of your request. (EX:  4/12/2021: 10-4) NOTE: ALL TIMES ARE IN MOUNTAIN STANDARD TIME (MST)</p>
+            {{ form.testdate2|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>Beginning of Time Range</h3>
+              <p>Please provide a 3-hour time block to take the test.</p>
+            {{ form.time3|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>End of Time Range</h3>
+              <p>Please provide a 3-hour time block to take the test.</p>
+            {{ form.time4|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>Phone Number</h3>
+              <p>Ex: 123-456-7890</p>
+            {{ form.phone|as_crispy_field }}
+            </div>
+
+            <div class="outerbox">
+              <h3>Verification</h3>
+              <p>Please verify that the above information is correct. Once you have double checked, please type "VERIFIED" in the box below.</p>
+              <div class="form-group">
+              <input class="formbox, input-class textinput textInput form-control" type="text" id="verified" name="verified" required value="" pattern="VERIFIED"/>
+            </div>
+            </div>
+            
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <div>
+              <button type="submit" class="btn btn-success" style="margin-bottom: 1vw;">
+              <i id='loader' style='display:none' class="fa fa-circle-o-notch fa-spin">
+                </i>Submit</button>
+            </div>
+          </form>
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <script>
+    const reason_box = document.getElementById('id_reason')
+    const reason_other = document.getElementById('reason_other')
+    reason_box.addEventListener('change', function handleClick() {
+        const reason_value = document.getElementById('id_reason').value
+        if (reason_value == 'Individual Request') {
+            reason_other.style.display = 'block';} 
+        else {
+            reason_other.style.display = 'none'; 
+        } 
+        });              
+  </script>
+  <script>
+    const language_box = document.getElementById('id_language')
+    const dropdown_other = document.getElementById('language_other')
+    language_box.addEventListener('change', function handleClick() {
+        const language_value = document.getElementById('id_language').value
+        if (language_value == 'Other') {
+            dropdown_other.style.display = 'block';} 
+        else {
+            dropdown_other.style.display = 'none'; 
+        } 
+        });              
+  </script>
+  <script>
+    const campus_box = document.getElementById('id_come_to_campus')
+    const cannot_come = document.getElementById('cannot_come')
+    campus_box.addEventListener('change', function handleClick() {
+        const campus_value = document.getElementById('id_come_to_campus').value
+        if (campus_value == 'No') {
+            cannot_come.style.display = 'block';} 
+        else {
+            cannot_come.style.display = 'none'; 
+        } 
+        });              
+  </script>
+  <script type = "text/javascript">  
+    window.onload = function(){  
+        var reason = document.getElementById("id_reason_other")
+        var language = document.getElementById("id_language_other")
+        var cannot_come = document.getElementById("id_cannot_come")
+        reason.removeAttribute('required')
+        language.removeAttribute('required')
+        cannot_come.removeAttribute('required')
+    }
+  </script>
+  <script type = "text/javascript">  
+    window.onbeforeunload = function(){  
+        var netid = document.getElementById("id_netid").value
+        var firstname = document.getElementById("id_firstname").value
+        var lastname = document.getElementById("id_lastname").value
+        var language = document.getElementById("id_language").value
+        var testdate1 = document.getElementById("id_testdate1").value
+        var testdate2 = document.getElementById("id_testdate2").value
+        var time1 = document.getElementById("id_time1").value
+        var time2 = document.getElementById("id_time2").value
+        var time3 = document.getElementById("id_time3").value
+        var time4 = document.getElementById("id_time4").value
+
+        var split_date1 = testdate1.split('-')
+        var date1_year = split_date1[0]
+        var date1_month = split_date1[1]
+        var date1_day = split_date1[2]
+
+        var split_date2 = testdate2.split('-')
+        var date2_year = split_date2[0]
+        var date2_month = split_date2[1]
+        var date2_day = split_date2[2]
+
+        sessionStorage.setItem("netid", netid)
+        sessionStorage.setItem("fullname", firstname + ' ' + lastname)
+        sessionStorage.setItem("language", language)
+        sessionStorage.setItem("testdate1", time1 +' to ' + time2 + ' on ' + date1_month + "/" + date1_day + "/" + date1_year)
+        sessionStorage.setItem("testdate2", time3 +' to ' + time4 + ' on ' + date2_month + "/" + date2_day + "/" + date2_year)
+    }  
+  </script> 
+</html>
